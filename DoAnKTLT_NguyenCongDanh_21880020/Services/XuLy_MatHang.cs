@@ -22,17 +22,38 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 {
                     return new ServiceResult<bool>(false, false, "Vui lòng điền dữ liệu hợp lệ");
                 }
-                else
+                if (TonTaiMaMH(DocMatHang().Data,mh.MaMH))
                 {
-                    DocLuu_MatHang.LuuMatHang(mh);
-                    return new ServiceResult<bool>(true, true, null);
-                }    
+                    return new ServiceResult<bool>(false, false, "Mã mặt hàng đã tồn tại, vui lòng chọn mã mặt hàng khác");
+                }
+                DocLuu_MatHang.LuuMatHang(mh);
+                return new ServiceResult<bool>(true, true, null);
             }
             catch(Exception ex)
             {
                 return new ServiceResult<bool>(false, false, ex.Message);
             }
         }
-        
+        public static ServiceResult<List<MatHang>> DocMatHang()
+        {
+            try
+            {
+                List<MatHang> lst = DocLuu_MatHang.DocMatHang();
+                return new ServiceResult<List<MatHang>>(true, lst, null);
+            }
+            catch
+            {
+                throw new Exception("Không tìm thấy file lưu trữ");
+            }
+        }
+        public static bool TonTaiMaMH(List<MatHang> lst, string maMH)
+        {
+            foreach (MatHang lh in lst)
+            {
+                if (lh.MaMH == maMH) return true;
+            }
+            return false;
+        }
+
     }
 }

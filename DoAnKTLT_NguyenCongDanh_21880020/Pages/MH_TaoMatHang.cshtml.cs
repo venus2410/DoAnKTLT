@@ -9,7 +9,7 @@ using DoAnKTLT_NguyenCongDanh_21880020.Services;
 
 namespace WebApplication1.Pages
 {
-    public class MH_TaoSanPhamModel : PageModel
+    public class MH_TaoMatHangModel : PageModel
     {
         public string chuoi=string.Empty;
         public List<LoaiHang> lstLH;
@@ -29,9 +29,11 @@ namespace WebApplication1.Pages
         public int Gia { get; set; }
         public void OnGet()
         {
+            lstLH= XuLy_LoaiHang.DocLoaiHang().Data;
         }
         public void OnPost()
-        {              
+        {
+            lstLH = XuLy_LoaiHang.DocLoaiHang().Data;
             try
             {
                 MatHang matHang = new MatHang();
@@ -40,8 +42,10 @@ namespace WebApplication1.Pages
                 matHang.HanDungMH = HanDung;
                 matHang.CongTySX = CongTySX;
                 matHang.NgaySX = NgaySX;
-                LoaiHang lH = new LoaiHang();
-                lH.MaLH = Loai;
+                if (!string.IsNullOrEmpty(Loai))
+                {
+                    matHang.Loai = Loai;
+                }
                 matHang.Gia = Gia;
 
                 var kq = XuLy_MatHang.ThemMatHang(matHang);

@@ -1,5 +1,6 @@
 ﻿@page
-@model WebApplication1.Pages.MH_TaoSanPhamModel
+@model WebApplication1.Pages.MH_TaoMatHangModel
+@using DoAnKTLT_NguyenCongDanh_21880020.Entities;
 @{
 }
 <form method="post">
@@ -15,7 +16,11 @@
     <input name="NgaySX" type="date"/><br />
     <label for="Loai">Loại hàng:</label>
     <select name="Loai">
-        <option value="aaa">aaa</option>
+        <option value="">Chưa xác định</option>
+        @foreach(LoaiHang lh in Model.lstLH)
+        {
+        <option value="@lh.MaLH">@lh.TenLH</option>
+        }
     </select><br />
     <label for="Gia">Giá:</label>
     <input name="Gia" type="number" min="0"/><br />

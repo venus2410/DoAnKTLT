@@ -12,7 +12,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Entities
         public string HanDungMH { get; set; } 
         public string CongTySX { get; set; }
         public string NgaySX { get; set; }
-        public LoaiHang Loai { get; set; }
+        public string Loai { get; set; }
         public int Gia { get; set; }
     }
 }
