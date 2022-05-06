@@ -1,0 +1,24 @@
+﻿@page
+@model WebApplication1.Pages.MH_TaoSanPhamModel
+@{
+}
+<form method="post">
+    <label for="Ma">Mã:</label>
+    <input name="Ma" /><br />
+    <label for="Ten">Tên:</label>
+    <input name="Ten" /><br />
+    <label for="HanDung">Hạn dùng:</label>
+    <input name="HanDung" type="date" /><br />
+    <label for="CongTySX">Công Ty SX:</label>
+    <input name="CongTySX" /><br />
+    <label for="NgaySX">Ngày SX:</label>
+    <input name="NgaySX" type="date"/><br />
+    <label for="Loai">Loại hàng:</label>
+    <select name="Loai">
+        <option value="aaa">aaa</option>
+    </select><br />
+    <label for="Gia">Giá:</label>
+    <input name="Gia" type="number" min="0"/><br />
+    <input type="submit" value="Tạo" />
+</form>
+@Model.chuoi
