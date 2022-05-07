@@ -39,3 +39,6 @@ D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCo
 D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\DoAnKTLT_NguyenCongDanh_21880020.genruntimeconfig.cache
 D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_TaoLoaiHang.cshtml.g.cs
 D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_TaoMatHang.cshtml.g.cs
+D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_TimKiemMatHang.cshtml.g.cs
+D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_SuaMatHang.cshtml.g.cs
+D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_XoaMatHang.cshtml.g.cs

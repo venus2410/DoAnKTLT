@@ -1,0 +1,33 @@
+﻿@page
+@model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaMatHangModel
+@using DoAnKTLT_NguyenCongDanh_21880020.Entities;
+<form method="post">
+    <button type="submit">Sửa</button>
+
+    <label>Tên</label><br />
+    <input name="ten" value="@Model.mh.TenMH" /><br />
+    <label>Hạn dùng</label><br />
+    <input name="hanDung" type="date" value="@Model.mh.HanDungMH" /><br />
+    <label>Công ty sản xuất</label><br />
+    <input name="ctySX" value="@Model.mh.CongTySX" /><br />
+    <label>Ngày sản xuất</label><br />
+    <input name="ngaySX" type="date" value="@Model.mh.NgaySX" /><br />
+    <label>Loại</label><br />
+    <select name="loai">
+        <option value="">Chưa xác định</option>
+        @foreach (LoaiHang lh in Model.lstLH)
+        {
+            if(lh.MaLH == Model.maLHChon)
+            {
+                <option value="@lh.MaLH" selected>@lh.TenLH</option>
+            }
+            else
+            {
+                <option value="@lh.MaLH">@lh.TenLH</option>
+            }
+        }
+    </select><br />
+    <label>Giá</label><br />
+    <input name="gia" type="number" min="0" value="@Model.mh.Gia"/>
+</form>
+@Model.chuoi

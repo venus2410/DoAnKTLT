@@ -41,9 +41,9 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 List<MatHang> lst = DocLuu_MatHang.DocMatHang();
                 return new ServiceResult<List<MatHang>>(true, lst, null);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("Không tìm thấy file lưu trữ");
+                return new ServiceResult<List<MatHang>>(true, null, ex.Message);
             }
         }
         public static bool TonTaiMaMH(List<MatHang> lst, string maMH)
@@ -54,6 +54,52 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             }
             return false;
         }
-
+        public static ServiceResult<bool> XoaMatHang(string id)
+        {
+            return new ServiceResult<bool>(true, true, null);
+        }
+        public static ServiceResult<List<MatHang>> TimKiemMatHang(string noiDungTimKiem)
+        {
+            try
+            {
+                List<MatHang> lstMH = DocLuu_MatHang.DocMatHang();
+                if (string.IsNullOrWhiteSpace(noiDungTimKiem))
+                {
+                    return new ServiceResult<List<MatHang>>(true, lstMH, null);
+                }
+                List<MatHang> lstKQuaTKiem = new List<MatHang>();
+                foreach (MatHang mh in lstMH)
+                {
+                    if (mh.TenMH.Contains(noiDungTimKiem))
+                    {
+                        lstKQuaTKiem.Add(mh);
+                    }
+                }
+                return new ServiceResult<List<MatHang>>(true, lstKQuaTKiem, null);
+            }
+            catch(Exception ex)
+            {
+                return new ServiceResult<List<MatHang>>(false, null, ex.Message);
+            }
+        }
+        public static ServiceResult<MatHang> TimKiemTheoID(string id)
+        {
+            try
+            {
+                List<MatHang> lstMH = DocLuu_MatHang.DocMatHang();
+                foreach (MatHang mh in lstMH)
+                {
+                    if (mh.MaMH==id)
+                    {
+                        return new ServiceResult<MatHang>(true, mh, null);
+                    }
+                }
+                return new ServiceResult<MatHang>(false, new MatHang(), "Không tìm thấy mặt hàng");
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<MatHang>(false, new MatHang(), ex.Message);
+            }
+        }
     }
 }
