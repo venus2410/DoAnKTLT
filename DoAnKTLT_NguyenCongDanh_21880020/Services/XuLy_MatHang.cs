@@ -9,16 +9,21 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
 {
     public class XuLy_MatHang
     {
-        public static ServiceResult<bool> ThemMatHang(MatHang mh)
+        public static bool HopLe(MatHang mh)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(mh.MaMH) ||
+            if (string.IsNullOrWhiteSpace(mh.MaMH) ||
                     string.IsNullOrWhiteSpace(mh.TenMH) ||
                     string.IsNullOrWhiteSpace(mh.HanDungMH) ||
                     string.IsNullOrWhiteSpace(mh.CongTySX) ||
                     string.IsNullOrWhiteSpace(mh.NgaySX) ||
-                    mh.Gia < 0)
+                    mh.Gia < 0) return false;
+            return true;
+        }
+        public static ServiceResult<bool> ThemMatHang(MatHang mh)
+        {
+            try
+            {
+                if (HopLe(mh))
                 {
                     return new ServiceResult<bool>(false, false, "Vui lòng điền dữ liệu hợp lệ");
                 }
@@ -99,6 +104,32 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             catch (Exception ex)
             {
                 return new ServiceResult<MatHang>(false, new MatHang(), ex.Message);
+            }
+        }
+        public static ServiceResult<bool> SuaMatHang(MatHang matHang)
+        {
+            try
+            {
+                if (HopLe(matHang))
+                {
+                    bool kq =DocLuu_MatHang.SuaMatHang(matHang);
+                    if (kq)
+                    {
+                        return new ServiceResult<bool>(true, true, null);
+                    }
+                    else
+                    {
+                        return new ServiceResult<bool>(false, false, "Có lỗi trong quá trình xử lý thồn tin");
+                    }
+                }
+                else
+                {
+                    return new ServiceResult<bool>(false, false, "Vui lòng nhập dữ liệu hợp lệ");
+                }
+            }
+            catch(Exception ex)
+            {
+                return new ServiceResult<bool>(false, false, ex.Message);
             }
         }
     }

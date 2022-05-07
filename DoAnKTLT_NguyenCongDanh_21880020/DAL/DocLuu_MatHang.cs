@@ -26,12 +26,25 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.DAL
             writer.Write(str);
             writer.Close();
         }
-        public static void LuuMatHang(MatHang MatHang)
+        public static void LuuMatHang(MatHang mh)
         {
             var dSMatHang = DocMatHang();
-            dSMatHang.Add(MatHang);
+            dSMatHang.Add(mh);
             LuuDanhSachMatHang(dSMatHang);
         }
-
+        public static bool SuaMatHang(MatHang mh)
+        {
+            List<MatHang> lstMH = DocMatHang();
+            for(int i=0;i<lstMH.Count;i++)
+            {
+                if (lstMH[i].MaMH == mh.MaMH)
+                {
+                    lstMH[i] = mh;
+                    LuuDanhSachMatHang(lstMH);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

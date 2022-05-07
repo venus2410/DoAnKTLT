@@ -17,6 +17,18 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
         public List<LoaiHang> lstLH=new List<LoaiHang>();
         [BindProperty(SupportsGet =true)]
         public string Id { get; set; }
+        [BindProperty]
+        public string ten { get; set; }
+        [BindProperty]
+        public string hanDung { get; set; }
+        [BindProperty]
+        public string ctySX { get; set; }
+        [BindProperty]
+        public string ngaySX { get; set; }
+        [BindProperty]
+        public string loai { get; set; }
+        [BindProperty]
+        public int gia { get; set; }
         public void OnGet()
         {
             lstLH = XuLy_LoaiHang.DocLoaiHang().Data;
@@ -29,6 +41,20 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
             else
             {
                 chuoi = kq.Message;
+            }
+        }
+        public void OnPost()
+        {
+            MatHang matHang = new MatHang(Id, ten, hanDung, ctySX, ngaySX, loai, gia);
+            var kq = XuLy_MatHang.SuaMatHang(matHang);
+            if(kq.IsSuccess)
+            {
+                Response.Redirect("/MH_TimKiemMatHang");
+            }
+            else
+            {
+                chuoi = kq.Message;
+                mh= XuLy_MatHang.TimKiemTheoID(Id).Data;
             }
         }
     }
