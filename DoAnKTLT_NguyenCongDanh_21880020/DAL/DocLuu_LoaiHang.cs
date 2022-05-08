@@ -46,5 +46,19 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.DAL
             }
             return false;
         }
+        public static bool XoaLoaiHang(string id)
+        {
+            List<LoaiHang> lstLH = DocLoaiHang();
+            for (int i = 0; i < lstLH.Count; i++)
+            {
+                if (lstLH[i].MaLH == id)
+                {
+                    lstLH.RemoveAt(i);
+                    LuuDanhSachLoaiHang(lstLH);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

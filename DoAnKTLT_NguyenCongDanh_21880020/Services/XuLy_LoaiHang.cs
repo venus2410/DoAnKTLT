@@ -130,5 +130,28 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             }
             return lstKQ;
         }
+        public static ServiceResult<bool> XoaLoaiHang(string id)
+        {
+            try
+            {
+                DocLuu_LoaiHang.XoaLoaiHang(id);
+                //cap nhat lai mat hang
+                List<MatHang> lstMH = XuLy_MatHang.DocMatHang().Data;
+                for(int i=0;i<lstMH.Count;i++)
+                {
+                    if(lstMH[i].Loai==id)
+                    {
+                        MatHang mh = lstMH[i];
+                        mh.Loai = null;
+                        XuLy_MatHang.SuaMatHang(mh);
+                    }
+                }
+                return new ServiceResult<bool>(true, true, null);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<bool>(false, false, ex.Message);
+            }
+        }
     }
 }

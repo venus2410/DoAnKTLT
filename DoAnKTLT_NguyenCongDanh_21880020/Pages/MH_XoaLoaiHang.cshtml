@@ -2,3 +2,11 @@
 @model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_XoaLoaiHangModel
 @{
 }
+<form method="post">
+    @Model.chuoi ?
+    @if (Model.timThay)
+    {
+        <button type="submit">Xóa</button>
+    }
+    <a href="/MH_TimKiemLoaiHang">Quay lại</a>
+</form>
