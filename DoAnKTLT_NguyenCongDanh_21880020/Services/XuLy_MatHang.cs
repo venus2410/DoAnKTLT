@@ -23,7 +23,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         {
             try
             {
-                if (HopLe(mh))
+                if (!HopLe(mh))
                 {
                     return new ServiceResult<bool>(false, false, "Vui lòng điền dữ liệu hợp lệ");
                 }
@@ -58,10 +58,6 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 if (lh.MaMH == maMH) return true;
             }
             return false;
-        }
-        public static ServiceResult<bool> XoaMatHang(string id)
-        {
-            return new ServiceResult<bool>(true, true, null);
         }
         public static ServiceResult<List<MatHang>> TimKiemMatHang(string noiDungTimKiem)
         {
@@ -112,15 +108,8 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             {
                 if (HopLe(matHang))
                 {
-                    bool kq =DocLuu_MatHang.SuaMatHang(matHang);
-                    if (kq)
-                    {
-                        return new ServiceResult<bool>(true, true, null);
-                    }
-                    else
-                    {
-                        return new ServiceResult<bool>(false, false, "Có lỗi trong quá trình xử lý thồn tin");
-                    }
+                    DocLuu_MatHang.SuaMatHang(matHang);
+                    return new ServiceResult<bool>(true, true, null);
                 }
                 else
                 {
@@ -128,6 +117,18 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 }
             }
             catch(Exception ex)
+            {
+                return new ServiceResult<bool>(false, false, ex.Message);
+            }
+        }
+        public static ServiceResult<bool> XoaMatHang(string id)
+        {
+            try
+            {
+                DocLuu_MatHang.XoaMatHang(id);
+                return new ServiceResult<bool>(true, true, null);
+            }
+            catch (Exception ex)
             {
                 return new ServiceResult<bool>(false, false, ex.Message);
             }

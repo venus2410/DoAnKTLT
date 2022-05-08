@@ -46,5 +46,19 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.DAL
             }
             return false;
         }
+        public static bool XoaMatHang(string id)
+        {
+            List<MatHang> lstMH = DocMatHang();
+            for (int i = 0; i < lstMH.Count; i++)
+            {
+                if (lstMH[i].MaMH == id)
+                {
+                    lstMH.RemoveAt(i);
+                    LuuDanhSachMatHang(lstMH);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
