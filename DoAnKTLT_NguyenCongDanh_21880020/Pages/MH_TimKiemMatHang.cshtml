@@ -16,19 +16,19 @@
         <th>Giá</th>
         <th></th>
     </tr>
-    @foreach (MatHang mh in Model.lstMH)
+    @for(int i=0;i<Model.lstMH.Count;i++)
     {
         <tr>
-            <td>@mh.MaMH</td>
-            <td>@mh.TenMH</td>
-            <td>@mh.HanDungMH</td>
-            <td>@mh.CongTySX</td>
-            <td>@mh.NgaySX</td>
-            <td>@mh.Loai</td>
-            <td>@mh.Gia</td>
+            <td>@Model.lstMH[i].MaMH</td>
+            <td>@Model.lstMH[i].TenMH</td>
+            <td>@Model.lstMH[i].HanDungMH</td>
+            <td>@Model.lstMH[i].CongTySX</td>
+            <td>@Model.lstMH[i].NgaySX</td>
+            <td>@Model.lstTenLoai[i]</td>
+            <td>@Model.lstMH[i].Gia</td>
             <td>
-                <a href="/MH_SuaMatHang?id=@mh.MaMH">Sửa</a>
-                <a href="/MH_XoaMatHang?id=@mh.MaMH">Xóa</a>
+                <a href="/MH_SuaMatHang?id=@Model.lstMH[i].MaMH">Sửa</a>
+                <a href="/MH_XoaMatHang?id=@Model.lstMH[i].MaMH">Xóa</a>
             </td>
         </tr>
     }

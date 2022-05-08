@@ -12,8 +12,8 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
     public class MH_TimKiemMatHangModel : PageModel
     {
         public string chuoi = string.Empty;
-        public List<MatHang> lstMH=new List<MatHang>();
-        public string tenLoai = string.Empty;
+        public List<MatHang> lstMH;
+        public List<string> lstTenLoai;
         [BindProperty]
         public string noiDungTimKiem { get; set; }
         public void OnGet()
@@ -22,6 +22,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
             if (kq.IsSuccess)
             {
                 lstMH = kq.Data;
+                lstTenLoai = XuLy_LoaiHang.TimTenLoaiHang(lstMH);
             }
             else
             {
@@ -36,6 +37,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
                 if (kq.Data.Count>0)
                 {
                     lstMH = kq.Data;
+                    lstTenLoai = XuLy_LoaiHang.TimTenLoaiHang(lstMH);
                 }
                 else
                 {

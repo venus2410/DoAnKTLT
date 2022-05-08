@@ -120,5 +120,15 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 return new ServiceResult<bool>(false, false, ex.Message);
             }
         }
+        public static List<string> TimTenLoaiHang(List<MatHang> lstMaLH)
+        {
+            List<string> lstKQ = new List<string>();
+            foreach(MatHang mh in lstMaLH)
+            {
+                LoaiHang lh = TimKiemTheoID(mh.Loai).Data;
+                lstKQ.Add(lh.TenLH);
+            }
+            return lstKQ;
+        }
     }
 }
