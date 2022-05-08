@@ -30,7 +30,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 {
                     return new ServiceResult<bool>(false, false, "Mã hóa đơn đã tồn tại, vui lòng chọn mã mặt hàng khác");
                 }
-                DocLuu_HoaDonNhap.LuuHoaDonNhap(HDN);
+                DocLuu_HoaDon.LuuHoaDonNhap(HDN);
                 return new ServiceResult<bool>(true, true, null);
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         {
             try
             {
-                List<HoaDonNhap> lst = DocLuu_HoaDonNhap.DocHoaDonNhap();
+                List<HoaDonNhap> lst = DocLuu_HoaDon.DocHoaDonNhap();
                 return new ServiceResult<List<HoaDonNhap>>(true, lst, null);
             }
             catch (Exception ex)
@@ -64,7 +64,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         {
             try
             {
-                List<HoaDonNhap> lstHDN = DocLuu_HoaDonNhap.DocHoaDonNhap();
+                List<HoaDonNhap> lstHDN = DocLuu_HoaDon.DocHoaDonNhap();
                 if (string.IsNullOrWhiteSpace(noiDungTimKiem))
                 {
                     return new ServiceResult<List<HoaDonNhap>>(true, lstHDN, null);
@@ -88,7 +88,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         {
             try
             {
-                List<HoaDonNhap> lstHDN = DocLuu_HoaDonNhap.DocHoaDonNhap();
+                List<HoaDonNhap> lstHDN = DocLuu_HoaDon.DocHoaDonNhap();
                 foreach (HoaDonNhap HDN in lstHDN)
                 {
                     if (HDN.MaHDN == id)
@@ -109,7 +109,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             {
                 if (HopLe(HoaDonNhap))
                 {
-                    DocLuu_HoaDonNhap.SuaHoaDonNhap(HoaDonNhap);
+                    DocLuu_HoaDon.SuaHoaDonNhap(HoaDonNhap);
                     return new ServiceResult<bool>(true, true, null);
                 }
                 else
@@ -126,7 +126,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         {
             try
             {
-                DocLuu_HoaDonNhap.XoaHoaDonNhap(id);
+                DocLuu_HoaDon.XoaHoaDonNhap(id);
                 return new ServiceResult<bool>(true, true, null);
             }
             catch (Exception ex)

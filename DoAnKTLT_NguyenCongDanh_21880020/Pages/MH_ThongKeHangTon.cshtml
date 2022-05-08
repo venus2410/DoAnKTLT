@@ -1,0 +1,17 @@
+﻿@page
+@model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_ThongKeHangTonModel
+@using DoAnKTLT_NguyenCongDanh_21880020.Entities;
+
+<table>
+    <tr>
+        <th>Mã hàng</th>
+        <th>Số lượng</th>
+    </tr>
+    @foreach(HangTon ht in Model.lstHangTon)
+    {
+        <tr>
+            <td>@ht.MaMH</td>
+            <td>@ht.SoLuongTon</td>
+        </tr>
+    }
+</table>
