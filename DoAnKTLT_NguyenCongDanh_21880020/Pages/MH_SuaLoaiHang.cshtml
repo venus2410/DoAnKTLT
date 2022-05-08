@@ -1,0 +1,11 @@
+﻿@page
+@model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaLoaiHangModel
+@{
+}
+<form method="post">
+    <label for="Ma">Mã: </label>@Model.lh.MaLH<br />
+    <label for="Ten">Tên:</label>
+    <input name="Ten" value="@Model.lh.TenLH" /><br />
+    <input type="submit" value="Tạo" />
+</form>
+@Model.chuoi

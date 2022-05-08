@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,19 +9,20 @@ using DoAnKTLT_NguyenCongDanh_21880020.Services;
 
 namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
 {
-    public class MH_TimKiemMatHangModel : PageModel
+    public class MH_SuaLoaiHangModel : PageModel
     {
         public string chuoi = string.Empty;
-        public List<MatHang> lstMH=new List<MatHang>();
-        public string tenLoai = string.Empty;
+        public LoaiHang lh = new LoaiHang();
+        [BindProperty(SupportsGet = true)]
+        public string Id { get; set; }
         [BindProperty]
-        public string noiDungTimKiem { get; set; }
+        public string ten { get; set; }
         public void OnGet()
         {
-            var kq= XuLy_MatHang.DocMatHang();
+            var kq = XuLy_LoaiHang.TimKiemTheoID(Id);
             if (kq.IsSuccess)
             {
-                lstMH = kq.Data;
+                lh = kq.Data;
             }
             else
             {
@@ -30,23 +31,17 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
         }
         public void OnPost()
         {
-            var kq = XuLy_MatHang.TimKiemMatHang(noiDungTimKiem);
+            LoaiHang lHSua = new LoaiHang(Id, ten);
+            var kq = XuLy_LoaiHang.SuaLoaiHang(lHSua);
             if (kq.IsSuccess)
             {
-                if (kq.Data.Count>0)
-                {
-                    lstMH = kq.Data;
-                }
-                else
-                {
-                    chuoi = "Không tìm thấy mặt hàng";
-                }
+                Response.Redirect("/MH_TimKiemLoaiHang");
             }
             else
             {
                 chuoi = kq.Message;
+                lh = XuLy_LoaiHang.TimKiemTheoID(Id).Data;
             }
         }
-
     }
 }

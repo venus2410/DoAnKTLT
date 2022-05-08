@@ -43,3 +43,5 @@ D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCo
 D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_SuaMatHang.cshtml.g.cs
 D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_XoaMatHang.cshtml.g.cs
 D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_TimKiemLoaiHang.cshtml.g.cs
+D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_SuaLoaiHang.cshtml.g.cs
+D:\Hoc Tap\HK2 2021-2022\KTLT\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\DoAnKTLT_NguyenCongDanh_21880020\obj\Debug\netcoreapp3.1\Razor\Pages\MH_XoaLoaiHang.cshtml.g.cs

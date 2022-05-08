@@ -9,5 +9,10 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Entities
     {
         public string MaLH { get; set; }
         public string TenLH { get; set; }
+        public LoaiHang(string ma,string ten)
+        {
+            this.MaLH = ma;
+            this.TenLH = ten;
+        }
     }
 }

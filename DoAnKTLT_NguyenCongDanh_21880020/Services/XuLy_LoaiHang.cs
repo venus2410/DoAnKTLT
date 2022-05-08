@@ -75,5 +75,50 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 return new ServiceResult<List<LoaiHang>>(false, null, ex.Message);
             }
         }
+        public static ServiceResult<LoaiHang> TimKiemTheoID(string id)
+        {
+            try
+            {
+                List<LoaiHang> lstLH = DocLuu_LoaiHang.DocLoaiHang();
+                foreach (LoaiHang LH in lstLH)
+                {
+                    if (LH.MaLH == id)
+                    {
+                        return new ServiceResult<LoaiHang>(true, LH, null);
+                    }
+                }
+                return new ServiceResult<LoaiHang>(false, new LoaiHang(), "Không tìm thấy mặt hàng");
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<LoaiHang>(false, new LoaiHang(), ex.Message);
+            }
+        }
+        public static bool HopLe(LoaiHang lh)
+        {
+            if (string.IsNullOrWhiteSpace(lh.MaLH) ||
+                    string.IsNullOrWhiteSpace(lh.TenLH))
+                return false;
+            return true;
+        }
+        public static ServiceResult<bool> SuaLoaiHang(LoaiHang lh)
+        {
+            try
+            {
+                if (HopLe(lh))
+                {
+                    DocLuu_LoaiHang.SuaLoaiHang(lh);
+                    return new ServiceResult<bool>(true, true, null);
+                }
+                else
+                {
+                    return new ServiceResult<bool>(false, false, "Vui lòng nhập dữ liệu hợp lệ");
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<bool>(false, false, ex.Message);
+            }
+        }
     }
 }
