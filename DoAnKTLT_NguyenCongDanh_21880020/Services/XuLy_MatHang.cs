@@ -71,7 +71,9 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 List<MatHang> lstKQuaTKiem = new List<MatHang>();
                 foreach (MatHang mh in lstMH)
                 {
-                    if (mh.TenMH.Contains(noiDungTimKiem))
+                    if (mh.TenMH.Contains(noiDungTimKiem)||mh.MaMH.Contains(noiDungTimKiem)
+                        ||mh.HanDungMH.Contains(noiDungTimKiem)||mh.CongTySX.Contains(noiDungTimKiem)
+                        ||mh.NgaySX.Contains(noiDungTimKiem)||mh.Loai.Contains(noiDungTimKiem))
                     {
                         lstKQuaTKiem.Add(mh);
                     }

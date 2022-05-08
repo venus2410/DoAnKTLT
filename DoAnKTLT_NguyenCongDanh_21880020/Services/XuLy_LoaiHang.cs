@@ -51,5 +51,29 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 throw new Exception("Không tìm thấy file lưu trữ");
             }
         }
+        public static ServiceResult<List<LoaiHang>> TimKiemLoaiHang(string noiDung)
+        {
+            try
+            {
+                List<LoaiHang> lstLH = DocLuu_LoaiHang.DocLoaiHang();
+                if (string.IsNullOrWhiteSpace(noiDung))
+                {
+                    return new ServiceResult<List<LoaiHang>>(true, lstLH, null);
+                }
+                List<LoaiHang> lstKQuaTKiem = new List<LoaiHang>();
+                foreach (LoaiHang lh in lstLH)
+                {
+                    if (lh.TenLH.Contains(noiDung)||lh.MaLH.Contains(noiDung))
+                    {
+                        lstKQuaTKiem.Add(lh);
+                    }
+                }
+                return new ServiceResult<List<LoaiHang>>(true, lstKQuaTKiem, null);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<List<LoaiHang>>(false, null, ex.Message);
+            }
+        }
     }
 }

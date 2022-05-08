@@ -1,0 +1,26 @@
+﻿@page
+@model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_TimKiemLoaiHangModel
+@using DoAnKTLT_NguyenCongDanh_21880020.Entities;
+<form method="post">
+    <input name="noiDungTimKiem" />
+    <button type="submit">Tìm kiếm</button>
+</form>
+<table>
+    <tr>
+        <th>Mã LH</th>
+        <th>Tên</th>
+        <th></th>
+    </tr>
+    @foreach (LoaiHang lh in Model.lstLH)
+    {
+        <tr>
+            <td>@lh.MaLH</td>
+            <td>@lh.TenLH</td>
+            <td>
+                <a href="/MH_SuaLoaiHang?id=@lh.MaLH">Sửa</a>
+                <a href="/MH_XoaLoaiHang?id=@lh.MaLH">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+@Model.chuoi
