@@ -7,8 +7,9 @@
 </form>
 <table>
     <tr>
-        <th>Mã LH</th>
-        <th>Tên</th>
+        <th>Mã hóa đơn</th>
+        <th>Tên mặt hàng</th>
+        <th>Số lượng</th>
         <th></th>
     </tr>
     @foreach (HoaDonNhap hdn in Model.lstHDN)
@@ -18,8 +19,8 @@
             <td>@hdn.MatHangNhap</td>
             <td>@hdn.SoLuongNhap</td>
             <td>
-                <a href="/MH_SuaLoaiHang?id=@hdn.MaHDN">Sửa</a>
-                <a href="/MH_XoaLoaiHang?id=@hdn.MaHDN">Xóa</a>
+                <a href="/MH_SuaHoaDonNhap?id=@hdn.MaHDN">Sửa</a>
+                <a href="/MH_XoaHoaDonNhap?id=@hdn.MaHDN">Xóa</a>
             </td>
         </tr>
     }

@@ -29,7 +29,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 {
                     return new ServiceResult<bool>(false, false, "Mã hóa đơn đã tồn tại, vui lòng chọn mã mặt hàng khác");
                 }
-                var SLHangTonCuaMH = KiemTraTonKhoMaMH(HDX.MatHangXuat).Data;
+                var SLHangTonCuaMH = XuLy_HangTon.KiemTraTonKhoMaMH(HDX.MatHangXuat).Data;
                 if (SLHangTonCuaMH < HDX.SoLuongXuat)
                 {
                     return new ServiceResult<bool>(false, false, "Số lượng tồn không đủ");
@@ -86,25 +86,6 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             catch (Exception ex)
             {
                 return new ServiceResult<List<HoaDonXuat>>(false, null, ex.Message);
-            }
-        }
-        public static ServiceResult<int> KiemTraTonKhoMaMH(string maMH)
-        {
-            try
-            {
-                List<HangTon> lstHangTon = XuLy_HangTon.ThongKeHangTon().Data;
-                foreach(HangTon ht in lstHangTon)
-                {
-                    if (ht.MaMH == maMH)
-                    {
-                        return new ServiceResult<int>(true, ht.SoLuongTon, null);
-                    }
-                }
-                return new ServiceResult<int>(false, 0, "Không tìm thấy mã mặt hàng");
-            }
-            catch(Exception ex)
-            {
-                return new ServiceResult<int>(false, 0, ex.Message);
             }
         }
         public static ServiceResult<HoaDonXuat> TimKiemTheoID(string id)

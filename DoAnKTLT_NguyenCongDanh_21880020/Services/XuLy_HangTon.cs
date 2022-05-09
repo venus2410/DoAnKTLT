@@ -17,7 +17,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 List<MatHang> lstMH = DocLuu_MatHang.DocMatHang();
                 foreach(MatHang mh in lstMH)
                 {
-                    HangTon ht = new HangTon(mh.MaMH, 0);
+                    HangTon ht = new HangTon(mh.MaMH,mh.TenMH, 0);
                     lstHangTon.Add(ht);
                 }
                 List<HoaDonNhap> lstHoaDonNhap = DocLuu_HoaDon.DocHoaDonNhap();
@@ -55,6 +55,24 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 return new ServiceResult<List<HangTon>>(false, null, ex.Message);
             }
         }
-
+        public static ServiceResult<int> KiemTraTonKhoMaMH(string maMH)
+        {
+            try
+            {
+                List<HangTon> lstHangTon = XuLy_HangTon.ThongKeHangTon().Data;
+                foreach (HangTon ht in lstHangTon)
+                {
+                    if (ht.MaMH == maMH)
+                    {
+                        return new ServiceResult<int>(true, ht.SoLuongTon, null);
+                    }
+                }
+                return new ServiceResult<int>(false, 0, "Không tìm thấy mã mặt hàng");
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<int>(false, 0, ex.Message);
+            }
+        }
     }
 }

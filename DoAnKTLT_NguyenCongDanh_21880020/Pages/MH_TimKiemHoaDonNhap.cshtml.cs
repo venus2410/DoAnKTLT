@@ -38,7 +38,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
                 }
                 else
                 {
-                    chuoi = "Không tìm thấy mặt hàng";
+                    chuoi = "Không tìm thấy hóa đơn";
                 }
             }
             else

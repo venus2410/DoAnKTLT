@@ -103,14 +103,33 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 return new ServiceResult<HoaDonNhap>(false, new HoaDonNhap(), ex.Message);
             }
         }
+
         public static ServiceResult<bool> SuaHoaDonNhap(HoaDonNhap HoaDonNhap)
         {
             try
             {
                 if (HopLe(HoaDonNhap))
                 {
-                    DocLuu_HoaDon.SuaHoaDonNhap(HoaDonNhap);
-                    return new ServiceResult<bool>(true, true, null);
+                    
+                    HoaDonNhap hdCu = TimKiemTheoID(HoaDonNhap.MaHDN).Data;
+                    int chenhLech;
+                    if (hdCu.MatHangNhap == HoaDonNhap.MatHangNhap)
+                    {
+                        chenhLech = hdCu.SoLuongNhap - HoaDonNhap.SoLuongNhap;
+                    }
+                    else
+                    {
+                        chenhLech = hdCu.SoLuongNhap;
+                    }
+                    if (XuLy_HangTon.KiemTraTonKhoMaMH(HoaDonNhap.MatHangNhap).Data >= chenhLech)
+                    {
+                        DocLuu_HoaDon.SuaHoaDonNhap(HoaDonNhap);
+                        return new ServiceResult<bool>(true, true, null);
+                    }
+                    else
+                    {
+                        return new ServiceResult<bool>(false, false, "Số lượng hàng sửa làm tồn kho âm");
+                    }
                 }
                 else
                 {

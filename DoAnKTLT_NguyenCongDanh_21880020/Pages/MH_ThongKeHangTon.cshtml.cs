@@ -13,7 +13,6 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
     {
         public string chuoi = string.Empty;
         public List<HangTon> lstHangTon = new List<HangTon>();
-
         public void OnGet()
         {
             var kq = XuLy_HangTon.ThongKeHangTon();
