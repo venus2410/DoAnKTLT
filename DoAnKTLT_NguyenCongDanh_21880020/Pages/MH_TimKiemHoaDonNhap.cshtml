@@ -1,0 +1,27 @@
+﻿@page
+@model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_TimKiemHoaDonNhapModel
+@using DoAnKTLT_NguyenCongDanh_21880020.Entities;
+<form method="post">
+    <input name="noiDungTimKiem" />
+    <button type="submit">Tìm kiếm</button>
+</form>
+<table>
+    <tr>
+        <th>Mã LH</th>
+        <th>Tên</th>
+        <th></th>
+    </tr>
+    @foreach (HoaDonNhap hdn in Model.lstHDN)
+    {
+        <tr>
+            <td>@hdn.MaHDN</td>
+            <td>@hdn.MatHangNhap</td>
+            <td>@hdn.SoLuongNhap</td>
+            <td>
+                <a href="/MH_SuaLoaiHang?id=@hdn.MaHDN">Sửa</a>
+                <a href="/MH_XoaLoaiHang?id=@hdn.MaHDN">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+@Model.chuoi
