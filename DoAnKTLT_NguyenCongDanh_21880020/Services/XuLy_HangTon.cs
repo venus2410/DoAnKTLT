@@ -20,29 +20,31 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                     HangTon ht = new HangTon(mh.MaMH, 0);
                     lstHangTon.Add(ht);
                 }
-                List<HoaDonNhap> lstHoaDonNhap = new List<HoaDonNhap>();
-                foreach(HoaDonNhap hdn in lstHoaDonNhap)
+                List<HoaDonNhap> lstHoaDonNhap = DocLuu_HoaDon.DocHoaDonNhap();
+                for(int i=0;i<lstHoaDonNhap.Count;i++)
                 {
-                    for(int i = 0; i < lstHangTon.Count; i++)
+                    for(int j = 0; j < lstHangTon.Count; j++)
                     {
-                        if(hdn.MatHangNhap==lstHangTon[i].MaMH)
+                        if(lstHoaDonNhap[i].MatHangNhap==lstHangTon[j].MaMH)
                         {
-                            HangTon hangTon = lstHangTon[i];
-                            hangTon.SoLuongTon+= hdn.SoLuongNhap;
-                            lstHangTon[i] = hangTon; 
+                            HangTon hangTon = lstHangTon[j];
+                            int sl = hangTon.SoLuongTon;
+                            hangTon.SoLuongTon += lstHoaDonNhap[i].SoLuongNhap;
+                            lstHangTon[j] = hangTon; 
                         }
                     }
                 }
-                List<HoaDonXuat> lstHoaDonXuat = new List<HoaDonXuat>();
-                foreach (HoaDonXuat hdx in lstHoaDonXuat)
+                List<HoaDonXuat> lstHoaDonXuat = DocLuu_HoaDon.DocHoaDonXuat();
+                for (int i = 0; i < lstHoaDonXuat.Count; i++)
                 {
-                    for (int i = 0; i < lstHangTon.Count; i++)
+                    for (int j = 0; j < lstHangTon.Count; j++)
                     {
-                        if (hdx.MatHangXuat == lstHangTon[i].MaMH)
+                        if (lstHoaDonXuat[i].MatHangXuat == lstHangTon[j].MaMH)
                         {
-                            HangTon hangTon = lstHangTon[i];
-                            hangTon.SoLuongTon -= hdx.SoLuongXuat;
-                            lstHangTon[i] = hangTon;
+                            HangTon hangTon = lstHangTon[j];
+                            int sl = hangTon.SoLuongTon;
+                            hangTon.SoLuongTon -= lstHoaDonXuat[i].SoLuongXuat;
+                            lstHangTon[j] = hangTon;
                         }
                     }
                 }
