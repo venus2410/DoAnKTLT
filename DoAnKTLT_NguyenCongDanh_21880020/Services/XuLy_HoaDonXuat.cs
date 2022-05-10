@@ -88,6 +88,22 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 return new ServiceResult<List<HoaDonXuat>>(false, null, ex.Message);
             }
         }
+        public static ServiceResult<List<string>> TimTenTheoID(List<HoaDonXuat> lstHDN)
+        {
+            List<string> lstTenMH = new List<string>();
+            try
+            {
+                foreach (HoaDonXuat HDN in lstHDN)
+                {
+                    lstTenMH.Add(XuLy_MatHang.TimTenTheoID(HDN.MatHangXuat).Data);
+                }
+                return new ServiceResult<List<string>>(true, lstTenMH, null);
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<List<string>>(false, lstTenMH, ex.Message);
+            }
+        }
         public static ServiceResult<HoaDonXuat> TimKiemTheoID(string id)
         {
             try
