@@ -1,0 +1,11 @@
+﻿@page
+@model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_XoaHoaDonXuatModel
+@using DoAnKTLT_NguyenCongDanh_21880020.Entities;
+<form method="post">
+    @Model.chuoi
+    @if (Model.timThay)
+    {
+        <button type="submit">Xóa</button>
+    }
+    <a href="/MH_TimKiemHoaDonNhap">Quay lại</a>
+</form>

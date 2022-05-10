@@ -7,23 +7,23 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using DoAnKTLT_NguyenCongDanh_21880020.Entities;
 using DoAnKTLT_NguyenCongDanh_21880020.Services;
 
-namespace DoAnKTLT_NguyenCongDanh_21880020.Pages.Shared
+namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
 {
-    public class MH_XoaHoaDonNhapModel : PageModel
+    public class MH_XoaHoaDonXuatModel : PageModel
     {
         public string chuoi = string.Empty;
-        public HoaDonNhap hdn = new HoaDonNhap();
+        public HoaDonXuat hdn = new HoaDonXuat();
         public bool timThay;
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; }
         public void OnGet()
         {
-            var kq = XuLy_HoaDonNhap.TimKiemTheoID(Id);
+            var kq = XuLy_HoaDonXuat.TimKiemTheoID(Id);
             if (kq.IsSuccess)
             {
                 hdn = kq.Data;
                 timThay = true;
-                chuoi = $"Bạn chắc chắn muốn xóa hóa đơn có mã số: {hdn.MaHDN}?";
+                chuoi = $"Bạn chắc chắn muốn xóa hóa đơn có mã số: {hdn.MaHDX}?";
             }
             else
             {
@@ -32,10 +32,10 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages.Shared
         }
         public void OnPost()
         {
-            var kq = XuLy_HoaDonNhap.XoaHoaDonNhap(Id);
+            var kq = XuLy_HoaDonXuat.XoaHoaDonXuat(Id);
             if (kq.IsSuccess)
             {
-                Response.Redirect("/MH_TimKiemHoaDonNhap");
+                Response.Redirect("/MH_TimKiemHoaDonXuat");
             }
             else
             {
