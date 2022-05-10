@@ -14,6 +14,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
         public string chuoi = string.Empty;
         public List<MatHang> lstMH=XuLy_MatHang.DocMatHang().Data;
         public HoaDonNhap hdBanDau;
+        public bool tonTai;
         
         [BindProperty(SupportsGet =true)]
         public string Id{ get; set; }
@@ -24,7 +25,17 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
 
         public void OnGet()
         {
-            hdBanDau = XuLy_HoaDonNhap.TimKiemTheoID(Id).Data;
+            var kq  = XuLy_HoaDonNhap.TimKiemTheoID(Id);
+            if (kq.IsSuccess)
+            {
+                hdBanDau = kq.Data;
+                tonTai = true;
+            }
+            else
+            {
+                tonTai = false;
+                chuoi = kq.Message;
+            }
         }
         public void OnPost()
         {
@@ -38,7 +49,6 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
             {
                 chuoi = kq.Message;
                 hdBanDau = XuLy_HoaDonNhap.TimKiemTheoID(Id).Data;
-
             }
         }
     }

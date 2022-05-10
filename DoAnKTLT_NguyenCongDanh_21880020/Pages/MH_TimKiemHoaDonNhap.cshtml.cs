@@ -13,6 +13,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
     {
         public string chuoi = string.Empty;
         public List<HoaDonNhap> lstHDN = new List<HoaDonNhap>();
+        public List<string> lstTenMH = new List<string>();
         [BindProperty]
         public string noiDungTimKiem { get; set; }
         public void OnGet()
@@ -21,6 +22,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
             if (kq.IsSuccess)
             {
                 lstHDN = kq.Data;
+                lstTenMH = XuLy_HoaDonNhap.TimTenTheoID(lstHDN).Data;
             }
             else
             {
@@ -35,6 +37,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
                 if (kq.Data.Count > 0)
                 {
                     lstHDN = kq.Data;
+                    lstTenMH = XuLy_HoaDonNhap.TimTenTheoID(lstHDN).Data;
                 }
                 else
                 {

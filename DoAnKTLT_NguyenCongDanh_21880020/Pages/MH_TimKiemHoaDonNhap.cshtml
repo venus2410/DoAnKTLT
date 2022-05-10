@@ -8,21 +8,23 @@
 <table>
     <tr>
         <th>Mã hóa đơn</th>
+        <th>Mã mặt hàng</th>
         <th>Tên mặt hàng</th>
         <th>Số lượng</th>
         <th></th>
     </tr>
-    @foreach (HoaDonNhap hdn in Model.lstHDN)
+    @for(int i=0;i<Model.lstHDN.Count;i++)
     {
-        <tr>
-            <td>@hdn.MaHDN</td>
-            <td>@hdn.MatHangNhap</td>
-            <td>@hdn.SoLuongNhap</td>
-            <td>
-                <a href="/MH_SuaHoaDonNhap?id=@hdn.MaHDN">Sửa</a>
-                <a href="/MH_XoaHoaDonNhap?id=@hdn.MaHDN">Xóa</a>
-            </td>
-        </tr>
+<tr>
+    <td>@Model.lstHDN[i].MaHDN</td>
+    <td>@Model.lstHDN[i].MatHangNhap</td>
+    <td>@Model.lstTenMH[i]</td>
+    <td>@Model.lstHDN[i].SoLuongNhap</td>
+    <td>
+        <a href="/MH_SuaHoaDonNhap?id=@Model.lstHDN[i].MaHDN">Sửa</a>
+        <a href="/MH_XoaHoaDonNhap?id=@Model.lstHDN[i].MaHDN">Xóa</a>
+    </td>
+</tr>
     }
 </table>
 @Model.chuoi

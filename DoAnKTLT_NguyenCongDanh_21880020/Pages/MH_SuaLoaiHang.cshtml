@@ -2,10 +2,13 @@
 @model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaLoaiHangModel
 @{
 }
-<form method="post">
-    <label for="Ma">Mã: </label>@Model.lh.MaLH<br />
-    <label for="Ten">Tên:</label>
-    <input name="Ten" value="@Model.lh.TenLH" /><br />
-    <input type="submit" value="Sửa" />
-</form>
+<div class="container w-50">
+    <form method="post">
+            <label>Mã loại hàng:</label>
+                @Model.lh.MaLH<br />
+            <label>Tên loại hàng:</label>
+            <input name="ten" value="@Model.lh.TenLH"><br />
+            <input type="submit" value="Sửa" /><a href="/MH_TimKiemLoaiHang">Quay lại</a>
+    </form>
+</div>
 @Model.chuoi

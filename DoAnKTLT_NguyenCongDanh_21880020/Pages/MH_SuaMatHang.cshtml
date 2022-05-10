@@ -2,8 +2,6 @@
 @model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaMatHangModel
 @using DoAnKTLT_NguyenCongDanh_21880020.Entities;
 <form method="post">
-    <button type="submit">Sửa</button>
-
     <label>Tên</label><br />
     <input name="ten" value="@Model.mh.TenMH" /><br />
     <label>Hạn dùng</label><br />
@@ -17,7 +15,7 @@
         <option value="">Chưa xác định</option>
         @foreach (LoaiHang lh in Model.lstLH)
         {
-            if(lh.MaLH == Model.maLHChon)
+            if (lh.MaLH == Model.maLHChon)
             {
                 <option value="@lh.MaLH" selected>@lh.TenLH</option>
             }
@@ -28,6 +26,7 @@
         }
     </select><br />
     <label>Giá</label><br />
-    <input name="gia" type="number" min="0" value="@Model.mh.Gia"/>
+    <input name="gia" type="number" min="0" value="@Model.mh.Gia" />
+    <button type="submit">Sửa</button>
 </form>
 @Model.chuoi

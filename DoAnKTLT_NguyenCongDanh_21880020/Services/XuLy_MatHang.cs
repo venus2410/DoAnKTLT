@@ -104,6 +104,25 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 return new ServiceResult<MatHang>(false, new MatHang(), ex.Message);
             }
         }
+        public static ServiceResult<string> TimTenTheoID(string id)
+        {
+            try
+            {
+                List<MatHang> lstMH = DocLuu_MatHang.DocMatHang();
+                foreach (MatHang mh in lstMH)
+                {
+                    if (mh.MaMH == id)
+                    {
+                        return new ServiceResult<string>(true, mh.TenMH, null);
+                    }
+                }
+                return new ServiceResult<string>(false, null, "Không tìm thấy mặt hàng");
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResult<string>(false, null, ex.Message);
+            }
+        }
         public static ServiceResult<bool> SuaMatHang(MatHang matHang)
         {
             try
