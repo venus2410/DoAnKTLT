@@ -116,21 +116,41 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                         return new ServiceResult<HoaDonXuat>(true, HDN, null);
                     }
                 }
-                return new ServiceResult<HoaDonXuat>(false, new HoaDonXuat(), "Không tìm thấy mặt hàng");
+                return new ServiceResult<HoaDonXuat>(false, new HoaDonXuat(), "Không tìm thấy hóa đơn");
             }
             catch (Exception ex)
             {
                 return new ServiceResult<HoaDonXuat>(false, new HoaDonXuat(), ex.Message);
             }
         }
-        public static ServiceResult<bool> SuaHoaDonXuat(HoaDonXuat HoaDonXuat)
+        public static ServiceResult<bool> SuaHoaDonXuat(HoaDonXuat hoaDonXuat)
         {
             try
             {
-                if (HopLe(HoaDonXuat))
+                if (HopLe(hoaDonXuat))
                 {
-                    DocLuu_HoaDon.SuaHoaDonXuat(HoaDonXuat);
-                    return new ServiceResult<bool>(true, true, null);
+
+                    HoaDonXuat hdCu = TimKiemTheoID(hoaDonXuat.MaHDX).Data;
+                    int chenhLech,slCu;
+                    if (hdCu.MatHangXuat == hoaDonXuat.MatHangXuat)
+                    {
+                        chenhLech = hoaDonXuat.SoLuongXuat- hdCu.SoLuongXuat;
+                        slCu = XuLy_HangTon.KiemTraTonKhoMaMH(hdCu.MatHangXuat).Data;
+                    }
+                    else
+                    {
+                        chenhLech = hoaDonXuat.SoLuongXuat;
+                        slCu= XuLy_HangTon.KiemTraTonKhoMaMH(hoaDonXuat.MatHangXuat).Data;
+                    }
+                    if (slCu >= chenhLech)
+                    {
+                        DocLuu_HoaDon.SuaHoaDonXuat(hoaDonXuat);
+                        return new ServiceResult<bool>(true, true, null);
+                    }
+                    else
+                    {
+                        return new ServiceResult<bool>(false, false, "Số lượng hàng sửa làm tồn kho âm");
+                    }
                 }
                 else
                 {

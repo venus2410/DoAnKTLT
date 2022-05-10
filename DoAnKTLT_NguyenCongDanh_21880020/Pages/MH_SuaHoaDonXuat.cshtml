@@ -1,0 +1,36 @@
+﻿@page
+@model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaHoaDonXuatModel
+@using DoAnKTLT_NguyenCongDanh_21880020.Entities
+@if (Model.tonTai)
+{
+    <form method="post">
+        <div class="row">
+            <div class="col-4">
+                <label>Mã hóa đơn nhập</label>
+                <input name="maHD" class="float-right" value="@Model.hdBanDau.MaHDX" readonly /><br />
+                <label>Mặt hàng</label>
+                <select name="mhChon" id="mhChon" class="float-right">
+                    @foreach (MatHang mh in Model.lstMH)
+                    {
+                        if (mh.MaMH == Model.hdBanDau.MatHangXuat)
+                        {
+                            <option value="@mh.MaMH" selected>@mh.TenMH</option>
+                        }
+                        else
+                        {
+                            <option value="@mh.MaMH">@mh.TenMH</option>
+                        }
+                    }
+                </select><br />
+                <label>Số lượng</label>
+                <input name="soLuong" type="number" id="soLuong" required min="0" class="float-right" value="@Model.hdBanDau.SoLuongXuat" /><br />
+                <button type="submit">Sửa</button>
+                <a href="/MH_TimKiemHoaDonNhap">Quai lại tìm kiếm</a>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    @Model.chuoi <a href="/MH_SuaHoaDonXuat?id=@Model.Id">Quai lại</a>
+}
