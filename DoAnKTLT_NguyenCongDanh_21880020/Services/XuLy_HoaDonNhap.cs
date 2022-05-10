@@ -162,8 +162,25 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         {
             try
             {
-                DocLuu_HoaDon.XoaHoaDonNhap(id);
-                return new ServiceResult<bool>(true, true, null);
+                HoaDonNhap hdn = TimKiemTheoID(id).Data;
+                if (HopLe(hdn))
+                {
+                    int hangTon=XuLy_HangTon.KiemTraTonKhoMaMH(hdn.MatHangNhap).Data-hdn.SoLuongNhap;
+                    
+                    if (hangTon>=0)
+                    {
+                        DocLuu_HoaDon.XoaHoaDonNhap(hdn.MaHDN);
+                        return new ServiceResult<bool>(true, true, null);
+                    }
+                    else
+                    {
+                        return new ServiceResult<bool>(false, false, "Số lượng hàng sửa làm tồn kho âm");
+                    }
+                }
+                else
+                {
+                    return new ServiceResult<bool>(false, false, "Vui lòng nhập dữ liệu hợp lệ");
+                }
             }
             catch (Exception ex)
             {
