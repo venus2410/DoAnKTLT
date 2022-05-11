@@ -17,7 +17,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 List<MatHang> lstMH = DocLuu_MatHang.DocMatHang();
                 foreach(MatHang mh in lstMH)
                 {
-                    HangTon ht = new HangTon(mh.MaMH,mh.TenMH, 0);
+                    HangTon ht = new HangTon(mh.MaMH,mh.TenMH, 0,mh.HanDungMH);
                     lstHangTon.Add(ht);
                 }
                 List<HoaDonNhap> lstHoaDonNhap = DocLuu_HoaDon.DocHoaDonNhap();
@@ -72,6 +72,35 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             catch (Exception ex)
             {
                 return new ServiceResult<int>(false, 0, ex.Message);
+            }
+        }
+        public static ServiceResult<List<HangTon>> ThongKeHangHetHan()
+        {
+            try
+            {
+                List<HangTon> lstHangHetHan = new List<HangTon>();
+                var lstHangTon = ThongKeHangTon().Data;
+                DateTime now = DateTime.Now;
+                foreach(HangTon ht in lstHangTon)
+                {
+                    DateTime hd = DateTime.ParseExact(ht.HanSD, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                    if (DateTime.Compare(now,hd)>0)
+                    {
+                        lstHangHetHan.Add(ht);
+                    }
+                }
+                if (lstHangHetHan.Count > 0)
+                {
+                    return new ServiceResult<List<HangTon>>(true, lstHangHetHan, null);
+                }
+                else
+                {
+                    return new ServiceResult<List<HangTon>>(false, null, "Không có mặt hàng nào hết hạn");
+                }
+            }
+            catch(Exception ex)
+            {
+                return new ServiceResult<List<HangTon>>(false, null, ex.Message);
             }
         }
     }
