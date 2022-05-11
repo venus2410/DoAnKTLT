@@ -146,6 +146,25 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         {
             try
             {
+                //xoa hoa don nhap xuat co mat hang
+                List<HoaDonXuat> lstHDX = DocLuu_HoaDon.DocHoaDonXuat();
+                foreach (HoaDonXuat hdx in lstHDX)
+                {
+                    if (hdx.MatHangXuat == id)
+                    {
+                        XuLy_HoaDonXuat.XoaHoaDonXuat(hdx.MaHDX);
+                    }
+                }
+                List<HoaDonNhap> lstHDN = DocLuu_HoaDon.DocHoaDonNhap();
+                foreach(HoaDonNhap hdn in lstHDN)
+                {
+                    if (hdn.MatHangNhap == id)
+                    {
+                        XuLy_HoaDonNhap.XoaHoaDonNhap(hdn.MaHDN);
+                    }
+                }
+                
+                //xoa mat hang khoi tap tin
                 DocLuu_MatHang.XoaMatHang(id);
                 return new ServiceResult<bool>(true, true, null);
             }
