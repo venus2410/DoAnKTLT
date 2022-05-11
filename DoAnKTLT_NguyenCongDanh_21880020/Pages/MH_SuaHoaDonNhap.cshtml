@@ -1,6 +1,7 @@
 ﻿@page
 @model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaHoaDonNhapModel
 @using DoAnKTLT_NguyenCongDanh_21880020.Entities
+<h2>Sửa hóa đơn nhập</h2>
 @if (Model.tonTai)
 {
     <form method="post">
@@ -9,7 +10,7 @@
                 <label>Mã hóa đơn nhập</label>
                 <input name="maHD" class="float-right" value="@Model.hdBanDau.MaHDN" readonly /><br />
                 <label>Mặt hàng</label>
-                <select name="mhChon" id="mhChon" class="float-right">
+                <select name="mhChon" id="mhChon" class="float-right w-50">
                     @foreach (MatHang mh in Model.lstMH)
                     {
                         if (mh.MaMH == Model.hdBanDau.MatHangNhap)

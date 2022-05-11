@@ -1,32 +1,51 @@
 ﻿@page
 @model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaMatHangModel
 @using DoAnKTLT_NguyenCongDanh_21880020.Entities;
-<form method="post">
-    <label>Tên</label><br />
-    <input name="ten" value="@Model.mh.TenMH" /><br />
-    <label>Hạn dùng</label><br />
-    <input name="hanDung" type="date" value="@Model.mh.HanDungMH" /><br />
-    <label>Công ty sản xuất</label><br />
-    <input name="ctySX" value="@Model.mh.CongTySX" /><br />
-    <label>Ngày sản xuất</label><br />
-    <input name="ngaySX" type="date" value="@Model.mh.NgaySX" /><br />
-    <label>Loại</label><br />
-    <select name="loai">
-        <option value="">Chưa xác định</option>
-        @foreach (LoaiHang lh in Model.lstLH)
-        {
-            if (lh.MaLH == Model.maLHChon)
+<form method="post" class="w-50 p-0 container">
+    <h2>Sửa mặt hàng</h2>
+    <div class="row">
+        <label class="col-5">Tên</label>
+        <input name="ten" value="@Model.mh.TenMH" class="col-7"/>
+    </div>
+    <div class="row">
+        <label class="col-5">Hạn dùng</label>
+        <input name="hanDung" type="date" value="@Model.mh.HanDungMH" class="col-7"/>
+    </div>
+    <div class="row">
+        <label class="col-5">Công ty sản xuất</label>
+        <input name="ctySX" value="@Model.mh.CongTySX" class="col-7"/>
+    </div>
+    <div class="row">
+        <label class="col-5">Ngày sản xuất</label>
+        <input name="ngaySX" type="date" value="@Model.mh.NgaySX" class="col-7"/>
+    </div>
+    <div class="row">
+        <label class="col-5">Loại</label>
+        <select name="loai" class="col-7">
+            <option value="">Chưa xác định</option>
+            @foreach (LoaiHang lh in Model.lstLH)
             {
-                <option value="@lh.MaLH" selected>@lh.TenLH</option>
+                if (lh.MaLH == Model.maLHChon)
+                {
+                    <option value="@lh.MaLH" selected>@lh.TenLH</option>
+                }
+                else
+                {
+                    <option value="@lh.MaLH">@lh.TenLH</option>
+                }
             }
-            else
-            {
-                <option value="@lh.MaLH">@lh.TenLH</option>
-            }
-        }
-    </select><br />
-    <label>Giá</label><br />
-    <input name="gia" type="number" min="0" value="@Model.mh.Gia" />
-    <button type="submit">Sửa</button>
+        </select>
+    </div>
+    <div class="row">
+        <label class="col-5">Giá</label>
+        <input name="gia" type="number" min="0" value="@Model.mh.Gia" class="col-7"/>
+    </div>
+    <div class="row justify-content-start">
+        <div class="col-5">
+            <button type="submit">Sửa</button>
+            <a href="/MH_TimKiemMatHang">Quay lại tìm kiếm</a>
+        </div>
+        
+    </div>
 </form>
 @Model.chuoi

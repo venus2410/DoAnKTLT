@@ -3,27 +3,43 @@
 @using DoAnKTLT_NguyenCongDanh_21880020.Entities;
 @{
 }
-<form method="post">
-    <label for="Ma">Mã:</label>
-    <input name="Ma" /><br />
-    <label for="Ten">Tên:</label>
-    <input name="Ten" /><br />
-    <label for="HanDung">Hạn dùng:</label>
-    <input name="HanDung" type="date" /><br />
-    <label for="CongTySX">Công Ty SX:</label>
-    <input name="CongTySX" /><br />
-    <label for="NgaySX">Ngày SX:</label>
-    <input name="NgaySX" type="date"/><br />
-    <label for="Loai">Loại hàng:</label>
-    <select name="Loai">
-        <option value="">Chưa xác định</option>
-        @foreach(LoaiHang lh in Model.lstLH)
-        {
-        <option value="@lh.MaLH">@lh.TenLH</option>
-        }
-    </select><br />
-    <label for="Gia">Giá:</label>
-    <input name="Gia" type="number" min="0"/><br />
-    <input type="submit" value="Tạo" />
+<form method="post" class="w-25">
+    <h1>Tạo mặt hàng</h1>
+    <div class="row">
+        <label for="Ma" class="col-5">Mã:</label>
+        <input name="Ma" class="col-7" />
+    </div>
+    <div class="row">
+        <label for="Ten" class="col-5">Tên:</label>
+        <input name="Ten" class="col-7" />
+    </div>
+    <div class="row">
+        <label for="HanDung" class="col-5">Hạn dùng:</label>
+        <input name="HanDung" type="date" class="col-7" />
+    </div>
+    <div class="row">
+        <label for="CongTySX" class="col-5">Công Ty SX:</label>
+        <input name="CongTySX" class="col-7" />
+    </div>
+    <div class="row">
+        <label for="NgaySX" class="col-5">Ngày SX:</label>
+        <input name="NgaySX" type="date" class="col-7" />
+    </div>
+    <div class="row">
+        <label for="Loai" class="col-5">Loại hàng:</label>
+        <select name="Loai" class="col-7">
+            <option value="" >Chưa xác định</option>
+            @foreach (LoaiHang lh in Model.lstLH)
+            {
+                <option value="@lh.MaLH">@lh.TenLH</option>
+            }
+        </select>
+    </div>
+    <div class="row">
+        <label for="Gia" class="col-5">Giá:</label>
+        <input name="Gia" type="number" min="0" class="col-7"/>
+    </div>
+        <input type="submit" value="Tạo" />
+    
 </form>
 @Model.chuoi

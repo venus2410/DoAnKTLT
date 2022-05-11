@@ -3,13 +3,14 @@
 @using DoAnKTLT_NguyenCongDanh_21880020.Entities
 @{
 }
+<h2>Tạo hóa đơn xuất</h2>
 <form method="post">
     <div class="row">
         <div class="col-4">
             <label>Mã hóa đơn xuất</label>
             <input name="maHD" class="float-right" /><br />
             <label>Mặt hàng</label>
-            <select name="mhChon" id="mhChon" class="float-right">
+            <select name="mhChon" id="mhChon" class="float-right w-50">
                 @foreach (MatHang mh in Model.lstMH)
                 {
                     <option value="@mh.MaMH">@mh.TenMH</option>

@@ -1,15 +1,16 @@
 ﻿@page
 @model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_SuaHoaDonXuatModel
 @using DoAnKTLT_NguyenCongDanh_21880020.Entities
+<h2>Sửa hóa đơn xuất</h2>
 @if (Model.tonTai)
 {
     <form method="post">
         <div class="row">
             <div class="col-4">
-                <label>Mã hóa đơn nhập</label>
+                <label>Mã hóa đơn xuất</label>
                 <input name="maHD" class="float-right" value="@Model.hdBanDau.MaHDX" readonly /><br />
                 <label>Mặt hàng</label>
-                <select name="mhChon" id="mhChon" class="float-right">
+                <select name="mhChon" id="mhChon" class="float-right w-50">
                     @foreach (MatHang mh in Model.lstMH)
                     {
                         if (mh.MaMH == Model.hdBanDau.MatHangXuat)
