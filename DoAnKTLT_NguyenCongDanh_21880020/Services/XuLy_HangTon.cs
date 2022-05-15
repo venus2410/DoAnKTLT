@@ -80,6 +80,10 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             {
                 List<HangTon> lstHangHetHan = new List<HangTon>();
                 var lstHangTon = ThongKeHangTon().Data;
+                if (lstHangTon == null)
+                {
+                    return new ServiceResult<List<HangTon>>(false, null, "Không tìm thấy file lưu trữ");
+                }
                 DateTime now = DateTime.Now;
                 foreach(HangTon ht in lstHangTon)
                 {

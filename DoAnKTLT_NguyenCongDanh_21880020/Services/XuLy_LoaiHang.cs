@@ -46,9 +46,9 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
                 List<LoaiHang> lst = DocLuu_LoaiHang.DocLoaiHang();
                 return new ServiceResult<List<LoaiHang>>(true, lst, null);
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("Không tìm thấy file lưu trữ");
+                return new ServiceResult<List<LoaiHang>>(false, null, ex.Message);
             }
         }
         public static ServiceResult<List<LoaiHang>> TimKiemLoaiHang(string noiDung)

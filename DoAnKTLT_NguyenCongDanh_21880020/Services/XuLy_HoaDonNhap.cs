@@ -109,11 +109,18 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             List<string> lstTenMH = new List<string>();
             try
             {
-                foreach (HoaDonNhap HDN in lstHDN)
+                if (lstHDN != null)
                 {
-                    lstTenMH.Add(XuLy_MatHang.TimTenTheoID(HDN.MatHangNhap).Data);
+                    foreach (HoaDonNhap HDN in lstHDN)
+                    {
+                        lstTenMH.Add(XuLy_MatHang.TimTenTheoID(HDN.MatHangNhap).Data);
+                    }
+                    return new ServiceResult<List<string>>(true, lstTenMH, null);
                 }
-                return new ServiceResult<List<string>>(true, lstTenMH, null);
+                else
+                {
+                    return new ServiceResult<List<string>>(false, null, "Không tìm thấy hóa đơn");
+                }
             }
             catch (Exception ex)
             {

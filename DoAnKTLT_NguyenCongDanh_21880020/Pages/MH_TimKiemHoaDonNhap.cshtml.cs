@@ -22,7 +22,15 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Pages
             if (kq.IsSuccess)
             {
                 lstHDN = kq.Data;
-                lstTenMH = XuLy_HoaDonNhap.TimTenTheoID(lstHDN).Data;
+                var kq2= XuLy_HoaDonNhap.TimTenTheoID(lstHDN);
+                if (kq2.IsSuccess)
+                {
+                    lstTenMH = kq2.Data;
+                }
+                else
+                {
+                    chuoi = kq2.Message;
+                }
             }
             else
             {

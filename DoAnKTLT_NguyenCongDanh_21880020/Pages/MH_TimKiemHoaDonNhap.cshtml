@@ -2,30 +2,33 @@
 @model DoAnKTLT_NguyenCongDanh_21880020.Pages.MH_TimKiemHoaDonNhapModel
 @using DoAnKTLT_NguyenCongDanh_21880020.Entities;
 <h2>Tìm kiếm hóa đơn nhập</h2>
-<form method="post">
-    <input name="noiDungTimKiem" />
-    <button type="submit">Tìm kiếm</button>
-</form>
-<table>
-    <tr>
-        <th>Mã hóa đơn</th>
-        <th>Mã mặt hàng</th>
-        <th>Tên mặt hàng</th>
-        <th>Số lượng</th>
-        <th></th>
-    </tr>
-    @for(int i=0;i<Model.lstHDN.Count;i++)
-    {
-<tr>
-    <td>@Model.lstHDN[i].MaHDN</td>
-    <td>@Model.lstHDN[i].MatHangNhap</td>
-    <td>@Model.lstTenMH[i]</td>
-    <td>@Model.lstHDN[i].SoLuongNhap</td>
-    <td>
-        <a href="/MH_SuaHoaDonNhap?id=@Model.lstHDN[i].MaHDN">Sửa</a>
-        <a href="/MH_XoaHoaDonNhap?id=@Model.lstHDN[i].MaHDN">Xóa</a>
-    </td>
-</tr>
-    }
-</table>
+@if (Model.lstHDN != null)
+{
+    <form method="post">
+        <input name="noiDungTimKiem" />
+        <button type="submit">Tìm kiếm</button>
+    </form>
+    <table>
+        <tr>
+            <th>Mã hóa đơn</th>
+            <th>Mã mặt hàng</th>
+            <th>Tên mặt hàng</th>
+            <th>Số lượng</th>
+            <th></th>
+        </tr>
+        @for (int i = 0; i < Model.lstHDN.Count; i++)
+        {
+            <tr>
+                <td>@Model.lstHDN[i].MaHDN</td>
+                <td>@Model.lstHDN[i].MatHangNhap</td>
+                <td>@Model.lstTenMH[i]</td>
+                <td>@Model.lstHDN[i].SoLuongNhap</td>
+                <td>
+                    <a href="/MH_SuaHoaDonNhap?id=@Model.lstHDN[i].MaHDN">Sửa</a>
+                    <a href="/MH_XoaHoaDonNhap?id=@Model.lstHDN[i].MaHDN">Xóa</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
 @Model.chuoi

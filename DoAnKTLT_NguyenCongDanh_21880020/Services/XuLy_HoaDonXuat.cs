@@ -90,18 +90,25 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
         }
         public static ServiceResult<List<string>> TimTenTheoID(List<HoaDonXuat> lstHDN)
         {
-            List<string> lstTenMH = new List<string>();
-            try
+            if (lstHDN != null)
             {
-                foreach (HoaDonXuat HDN in lstHDN)
+                List<string> lstTenMH = new List<string>();
+                try
                 {
-                    lstTenMH.Add(XuLy_MatHang.TimTenTheoID(HDN.MatHangXuat).Data);
+                    foreach (HoaDonXuat HDN in lstHDN)
+                    {
+                        lstTenMH.Add(XuLy_MatHang.TimTenTheoID(HDN.MatHangXuat).Data);
+                    }
+                    return new ServiceResult<List<string>>(true, lstTenMH, null);
                 }
-                return new ServiceResult<List<string>>(true, lstTenMH, null);
+                catch (Exception ex)
+                {
+                    return new ServiceResult<List<string>>(false, lstTenMH, ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return new ServiceResult<List<string>>(false, lstTenMH, ex.Message);
+                return new ServiceResult<List<string>>(false, null, "Không tìm thấy hóa đơn");
             }
         }
         public static ServiceResult<HoaDonXuat> TimKiemTheoID(string id)

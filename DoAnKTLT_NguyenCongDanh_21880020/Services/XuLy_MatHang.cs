@@ -48,7 +48,7 @@ namespace DoAnKTLT_NguyenCongDanh_21880020.Services
             }
             catch(Exception ex)
             {
-                return new ServiceResult<List<MatHang>>(true, null, ex.Message);
+                return new ServiceResult<List<MatHang>>(false, null, ex.Message);
             }
         }
         public static bool TonTaiMaMH(List<MatHang> lst, string maMH)
